@@ -2,9 +2,11 @@
 //Output: [0,1]
 //Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
 
+//MARK: сложность алгоритма O(N)
 
-let nums = [2,7,11,15]
-let target = 9
+
+let nums: [Int] = [3,2,4]
+let target = 6
 
 extension Array where Element == Int {
     
@@ -12,12 +14,14 @@ extension Array where Element == Int {
         
         var result: [Int] = []
         
-        for firstNumber in nums {
-            let difference = target - firstNumber
-            let secondNumber = nums.firstIndex(of: difference)
-            if secondNumber != nil {
-                result.append(nums.firstIndex(of: firstNumber)!)
-                result.append(secondNumber!)
+        for index in nums.indices {
+            let difference = target - nums[index]
+            
+            guard index < nums.count - 1 else { break }
+            
+            if let secondNumberIndex = nums[ index + 1 ... nums.count - 1 ].firstIndex(of: difference) {
+                result.append(index)
+                result.append(secondNumberIndex)
                 break
             }
         }
@@ -25,4 +29,4 @@ extension Array where Element == Int {
     }
 }
 
-let result = nums.sumIndexesReturner(target) //[0, 1]
+let result = nums.sumIndexesReturner(target)
