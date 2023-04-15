@@ -6,7 +6,6 @@ let x = 121
 
 extension Int {
     func isPallindrom() -> Bool {
-//        String(self) == String(String(self).reversed())
         var originalString: [Character] = []
         var reversedString: [Character] = []
         
