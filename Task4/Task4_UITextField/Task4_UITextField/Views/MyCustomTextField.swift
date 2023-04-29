@@ -59,17 +59,11 @@ class MyCustomTextField: UITextField, UITextFieldDelegate {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setupSubviews()
-        // Add a target for editingChanged event
-        addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
-        addTarget(self, action: #selector(textFieldDidEndEditing), for: .editingDidEnd)
-        addTarget(self, action: #selector(textFieldDidBeginEditing), for: .editingDidBegin)
-        delegate = self
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+        //MARK: change frames to autolayout
         // Adjust the placeholder label position and size
         if !isEditing && text?.isEmpty ?? true {
             let x = placeholderLabel.frame.origin.x

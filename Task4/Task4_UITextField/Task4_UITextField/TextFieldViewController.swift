@@ -26,7 +26,7 @@ final class TextFieldViewController: UIViewController, UITextFieldDelegate {
     
     func myTextFieldSetup() {
         // Set the text changed callback
-        myTextField.textChangedCallback = { newText in
+        myTextField.textChangedCallback = { [weak self] newText in
             print("Text changed: \(newText)")
             // Perform any other actions or updates based on the changed text
         }
